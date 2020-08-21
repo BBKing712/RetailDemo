@@ -42,5 +42,22 @@ namespace ClientUI.Controllers
 
             return View(model);
         }
+        [HttpPost]
+        public async Task<ActionResult> DoDummyStuff()
+        {
+            var orderId = Guid.NewGuid().ToString().Substring(0, 8);
+
+            var command = new DoDummyStuff { Id = orderId };
+
+            // Send the command
+            await _endpointInstance.Send(command)
+                .ConfigureAwait(false);
+
+            dynamic model = new ExpandoObject();
+            model.OrderId = orderId;
+            model.MessagesSent = Interlocked.Increment(ref messagesSent);
+
+            return View(model);
+        }
     }
 }

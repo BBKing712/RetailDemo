@@ -85,6 +85,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Views\Shared\_LicenseForm.cshtml" />
+    <Content Include="Views\Home\DoDummyStuff.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Messages\Messages.csproj">
